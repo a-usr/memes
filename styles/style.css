@@ -1,25 +1,39 @@
 * {
     text-align: center;
 }
-@keyframes spin {
-    to {
-        transform: translateY(-1);
-    }
+@keyframes moveDown {
+    from {
+        transform: translateY(100%);
+      }
+    
+      to {
+        transform: translateY(0%);
+      }
+}
+
+.backgroundContainer {
+    overflow: clip; 
+    width: 100%; 
+    height: 100%; 
+    z-index: -1; 
+    position: fixed; 
+    top: 0;
 }
 @media (prefers-reduced-motion: no-preference) { 
     @supports (animation-timeline: scroll()) { 
         .div1 {
             color: rgb(255, 127, 127);
-            background-color: aqua;
+            background-image: url("/shared/background.svg");
+            background-position: center;
+            opacity: 1;
             width: 100%;
             height: 100%;
-            overflow:hidden;
             z-index: -1;
             position: absolute;
             top: 0;
-            animation: spin linear both;
-            animation-timeline: scoll();
+            animation: moveDown linear both;
+            animation-timeline: scroll(y);
         }
     }
 }
-html, body { margin:0; padding:0; height:100%; width:100%;}
+html, body { margin:0; padding:0; height:100%; width:100%; overflow: visible; }
