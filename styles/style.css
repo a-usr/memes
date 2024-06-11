@@ -23,7 +23,7 @@
     @supports (animation-timeline: scroll()) { 
         .div1 {
             color: rgb(255, 127, 127);
-            background-image: url("/shared/background.svg");
+            background-image: url("../assets/background.svg");
             background-position: center;
             opacity: 1;
             width: 100%;

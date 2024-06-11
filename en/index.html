@@ -12,5 +12,13 @@
     <body>
         <h1>This is a website</h1>
         <h3>One of the websites of all time</h3>
+        <script>
+            var req = new XMLHttpRequest();
+            req.open('GET', '../php/memes.php', false);
+            req.send(null);
+            if(req.status == 200) {
+                alert(req.responseText);
+            }
+        </script>
 </html>
 
