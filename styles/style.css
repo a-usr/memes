@@ -11,14 +11,78 @@
       }
 }
 
-.backgroundContainer {
-    overflow: clip; 
-    width: 100%; 
-    height: 100%; 
-    z-index: -1; 
-    position: fixed; 
-    top: 0;
+
+.bg {
+    display: flex;
+    flex-direction: column;
 }
+
+.bg.meme{
+    display: inline-block;
+    width: 100%;
+}
+
+@media not all and not (min-width: 640px) {
+    
+    .bg {
+        margin: 1px;
+    }
+    .bg.center {
+        display:none;
+    }
+}
+
+@media not all and (min-width: 640px) {
+    
+    .bg {
+        margin: 5px;
+    }
+
+    .bg.left {
+        display:none;
+    }
+    .bg.right {
+        display:none;
+    }
+
+}
+.bg.left {
+    position: absolute;
+    top: 0px;
+    width: 50%;
+    height: 100%;
+    left: 0px;
+    transform: rotateY(10deg);
+}
+
+.bg.right {
+    .container {
+        left:0px;
+    }
+    position: absolute;
+    top: 0px;
+    width: 50%;
+    height: max-content;
+    left: 75%;
+    transform: rotateY(-10deg);
+}
+.bg .container {
+    width: 50%;
+
+}
+.bg.center {
+    position: absolute;
+    top: 0px;
+    height: 100%;
+    width: 50%;
+    left: 25%;
+    /*background-color: red;*/
+}
+
+.bg_fill {
+    width: 50%;
+}
+/* old stuff */
 @media (prefers-reduced-motion: no-preference) { 
     @supports (animation-timeline: scroll()) { 
         .div1 {
@@ -37,3 +101,7 @@
     }
 }
 html, body { margin:0; padding:0; height:100%; width:100%; overflow: visible; }
+body {
+    background-color: #090b0c;
+    color: #ffffff;
+}
