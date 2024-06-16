@@ -1,5 +1,12 @@
 * {
     text-align: center;
+    line-height: 1.4;
+    text-shadow: 1px 1px 5px #262626;
+}
+.text {
+  position: relative;
+  left: 25%;
+  width: 50%;
 }
 @keyframes moveDown {
     from {
@@ -10,9 +17,13 @@
         transform: translateY(0%);
       }
 }
-
+#background {
+  --col: #090b0cad;
+  mask-image: linear-gradient(var(--col), var(--col));
+}
 
 .bg {
+    z-index: -11;
     display: flex;
     flex-direction: column;
 }
@@ -35,6 +46,7 @@
 @media not all and (min-width: 640px) {
     
     .bg {
+        flex-grow: 1;
         margin: 5px;
     }
 
@@ -47,28 +59,25 @@
 
 }
 .bg.left {
+    flex-direction: column;
     position: absolute;
     top: 0px;
-    width: 50%;
-    height: 100%;
+    width: 25%;
+    height: max-content;
     left: 0px;
+    transform-origin: -100% 50%;
     transform: rotateY(10deg);
 }
 
 .bg.right {
-    .container {
-        left:0px;
-    }
+    flex-direction: column;
     position: absolute;
     top: 0px;
-    width: 50%;
+    width: 25%;
     height: max-content;
-    left: 75%;
+    right: 0px;
+    transform-origin: 200% 50% -5px;
     transform: rotateY(-10deg);
-}
-.bg .container {
-    width: 50%;
-
 }
 .bg.center {
     position: absolute;
@@ -80,6 +89,7 @@
 }
 
 .bg_fill {
+    height: 5px;
     width: 50%;
 }
 /* old stuff */
