@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="de">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1" >
+        <meta name=description content="Memes lol">
+        <link rel="prefetch" href=".">
+        <script>
+            var location = "/en/index.html";
+            sessionStorage.setItem("SomeNameThatIsSurelyNotUsedElsewhere", location);
+            window.open("/", "_self");
+
+        </script>
+    </head>
+    <body>
+        <div class="w-full block flex-grow lg:flex lg:items-center lg:w-auto">
+            <div class="text-sm lg:flex-grow">
+                <h1 class="text-4xl sm:text-5xl lg:text-6xl">MEMES</h1>
+                <h3 class="text-3xl sm:text-4xl lg:text-5xl">The DNA of the soul</h3>
+                <button id="main" class="hover:text-gray-200 m-3"> Main Page</button>
+                <!--<button id="about" class="hover:text-gray-200"> &Uumlber diese Webseite</button>-->
+                <button id="sources" class="hover:text-gray-200 m-3"> Sources</button>
+            </div>
+          </div>
+            <script>
+                $(()=>{
+                    $("#main").click((event)=>{
+                        $.ajax({
+                        url: "/en",
+                        success: (data)=>{
+                            var content = $("#content").html(data.replace(/<head>[\s\S]*<\/head>/mg, '')).html();
+                            window.history.pushState({html:content}, "", "/en");
+                            },
+                        dataType: "html"
+                        })
+                    });
+                    $("#sources").click((event)=>{
+                        $.ajax({
+                        url: "/en/sources",
+                        success: (data)=>{
+                            var content = $("#content").html(data.replace(/<head>[\s\S]*<\/head>/mg, '')).html();
+                            window.history.pushState({html:content}, "", "/en/sources");
+                            },
+                        dataType: "html"
+                        })
+                    });
+                })
+            </script>
+                
+
+    </body>
+</html>
+

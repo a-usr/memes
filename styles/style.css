@@ -3,6 +3,12 @@
     line-height: 1.4;
     text-shadow: 1px 1px 5px #262626;
 }
+h2 {
+    font-size: 2em;
+}
+.tb {
+    margin: auto;
+}
 .text {
   position: relative;
   left: 25%;
@@ -19,15 +25,14 @@
 }
 @keyframes scroll-horizontal {
     0% {
-        bottom: 100%;
+        transform: translateY(0%);
     }
-    
-    100% {
-        top: 0;
+    100%{
+        transform: translateY(200%);
     }
 }
 #background {
-  --col: #090b0cad;
+  --col: #090b0c42;
   mask-image: linear-gradient(var(--col), var(--col));
 }
 
@@ -51,7 +56,6 @@
         display:none;
     }
 }
-
 @media not all and (min-width: 640px) {
     
     .bg {
@@ -105,19 +109,18 @@
 }
 
 .bg.animate {
-    animation: moveDown 240s linear infinite;
+    animation: scroll-horizontal 480s linear infinite;
     white-space: nowrap;
     justify-content: space-around;
     .mobile {
-        animation-duration: 480s;
+        animation-duration: 960s;
         .secondary {
-            animation-delay: 240s;
+            animation-delay: 480s;
         }
     }
 }
-
 .bg.secondary {
-    animation-delay: 120s;
+  animation-delay: 240s;
 }
 /* old stuff */
 @media (prefers-reduced-motion: no-preference) { 
@@ -136,6 +139,20 @@
             animation-timeline: scroll(y);
         }
     }
+}
+
+.centerimgAAAA {
+    position: absolute; 
+    left: 0; 
+    right: 0; 
+    margin-left: auto; 
+    margin-right: auto; 
+    width: 50%;
+}
+#meme_text {
+    margin: auto;
+    width: 45%;
+    height: 50%;
 }
 html, body { margin:0; padding:0; height:100%; width:100%; overflow: visible; }
 body {

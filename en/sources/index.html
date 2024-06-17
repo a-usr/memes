@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="de">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1" >
+        <meta name=description content="Memes lol">
+        <link rel="prefetch" href=".">
+        <script>
+            var location = "/en/sources/";
+            sessionStorage.setItem("SomeNameThatIsSurelyNotUsedElsewhere", location);
+            window.open("/", "_self");
+        </script>
+    </head>
+    <body>
+        <script>
+            $(()=>{
+                var sources = sessionStorage.getItem("sources").split(",");
+                var alt = false;
+                var sw = () => {
+                    switch (alt) {
+                        case false: {
+                            alt = true;
+                            $(".tb").append("<tr class='tabol'></tr>");
+                            $(".tabol").append("<td class='sel'></td>");
+                            return $(".sel").removeClass("sel");
+                        }
+                        case true: {
+                            alt = null;
+                            $(".tabol").append("<td class='sel'></td>");
+                            return $(".sel").removeClass("sel");
+                        }
+                        case null: {
+                            alt = false;
+                            $(".tabol").append("<td class='sel'></td>").removeClass("tabol");
+                            return $(".sel").removeClass("sel");
+                        }
+                    }
+                }
+                if (sources !== null){
+                    for (source in sources){
+                        sw().append("<a href='"+sources[source]+"'>"+sources[source].split("/").reverse()[1].replace(/_/g, " ")+"<br></a>");
+                    }
+                }
+            })
+        </script>
+    
+    <br>
+    <br>
+    <br>
+    <br>
+    <h2 class="text-3xl sm:text-4xl lg:text-5xl">
+        Sources:
+    </h2>
+    <br>
+    <a href="https://i.imgflip.com/4/785ue9.jpg">Bild 1</a>
+    
+    <br>
+    <h2 class="text-3xl sm:text-4xl lg:text-5xl">
+        Background: 
+    </h2>
+    <br>
+    <br>
+    <br>
+    <div id="data">
+        <table class="tb">
+        </table>
+    </div>
+    </body>
+</html>
+
