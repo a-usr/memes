@@ -1,5 +1,5 @@
 [
-<?php
+<?php // I scapped this haha
     $memes = array();
     $path = "../assets/memes";
     if ($handle = opendir($path)) {

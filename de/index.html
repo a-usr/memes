@@ -9,55 +9,23 @@
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
         <link rel="stylesheet" href="../styles/style.css">
         <link rel="stylesheet" href="../styles/tailwind.css">
+        <link rel="prefetch" href=".">
         <title>
             REEEEEEEEEEEEEEEE
         </title>
+        <script>
+            var location = "/de/index.html";
+            sessionStorage.setItem("SomeNameThatIsSurelyNotUsedElsewhere", location);
+            window.open("/", "_self");
+
+        </script>
     </head>
     <body>
-        <h1 class="text-4xl sm:text-5xl lg:text-6xl">MEMES</h1>
-        <h3 class="text-3xl sm:text-4xl lg:text-5xl">The DNA of the soul</h3>
-        <div class="-z-10 absolute top-0 left-0 h-full w-full" id="background">
-            <div class="h-full w-full absolute top-0 left-0">
-                <div class="bg right">
-                </div>
-                <div class="bg center"></div>
-                <div class="bg left">
-                    <!--<div class="bg_fill"></div>-->
-                </div>
+            <div class="text">
+              Memes sind ein heutzutage sehr beliebtes Medium. 
+              Das Ziel dieser Webseite ist es dieses Medium zu analysieren, und in mehr oder weniger 
+              einfachen Worten zu erklären.
             </div>
-        </div>
-        <script>
-            fetch("../php/memes.php").then(
-                (response) => {
-                    if(response.ok) {
-                        // man, fuck javascript asynchronous programming!
-                        response.json().then((memes) => {
-                            console.log(memes);
-                            var alt = false;
-                            var bg_right = $(".bg.right");
-                            var bg_left = $(".bg.left");
-                            var bg_center = $(".bg.center");
-                            for (meme in memes) {
-                                (alt ? bg_right : bg_left) // Alternate between left and right
-                                .add(bg_center) // Add the center to the current selection
-                                .append("\
-                                <div class=\"bg meme\"> \
-                                    <img src=\"" + memes[meme] +"\" class=\"bg\">\
-                                    </"+"div>"); //append the actual image
-                                    alt =! alt;
-                                }
-                        });
-                    }
-
-                }
-            )
-        </script>
-        <div class="text">
-          Memes sind ein heutzutage sehr beliebtes Medium. 
-          Das Ziel dieser Webseite ist es dieses Medium zu analysieren, und in mehr oder weniger 
-          einfachen Worten zu erklären.
-
-        </div>
     </body>
 </html>
 

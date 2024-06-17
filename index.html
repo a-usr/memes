@@ -1,12 +1,101 @@
 <!DOCTYPE html>
-<html>
+<html lang="de">
     <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1" >
+        <meta name=description content="Eine Webseite über Webseiten">
+        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.min.js" integrity="sha384-0pUGZvbkm6XF6gxjEnlmuGrJXVbNuzT9qBBavbLwCsOGabYfZo0T0to5eqruptLy" crossorigin="anonymous"></script>
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+        <link rel="stylesheet" href="styles/style.css">
+        <link rel="stylesheet" href="styles/tailwind.css">
+        <title>
+            REEEEEEEEEEEEEEEE
+        </title>
+        <script>
+            $(document).ready(()=>{
+                var prev = sessionStorage.getItem("SomeNameThatIsSurelyNotUsedElsewhere");
+                if (prev !== null){
+                    $.ajax({
+                        url: prev,
+                        success: (data)=>{
+                            var content = $("#content").html(data.replace(/<head>[\s\S]*<\/head>/mg, '')).html();
+                            window.history.replaceState({html:content}, "", prev);
+                            },
+                        dataType: "html"
+                    })
+                }
+                else {
+                    $.ajax({
+                        url: navigator.languages.includes("de") ? "/de" : "/en",
+                        success: (data)=>{
+                            var content = $("#content").html(data.replace(/<head>[\s\S]*<\/head>/mg, '')).html();
+                            window.history.replaceState({html:content}, "", navigator.languages.includes("de") ? "/de" : "/en");
+                            },
+                        dataType: "html"
+                    })
+                }
+            })
+        </script>
     </head>
     <body>
+        <h1 class="text-4xl sm:text-5xl lg:text-6xl">MEMES</h1>
+        <h3 class="text-3xl sm:text-4xl lg:text-5xl">The DNA of the soul</h3>
+        <div class="-z-10 absolute top-0 left-0 h-full w-full overflow-hidden" id="background">
+            <div class="h-full w-full absolute top-0 left-0">
+                <div class="bg right desktop"></div>
+                <div class="bg right desktop secondary"></div>
+                <div class="bg left desktop"></div>
+                <div class="bg left desktop secondary"></div>
+                <div class="bg center desktop"></div>
+                <div class="bg center desktop secondary"></div>
+                <div class="bg mobile"></div>
+                <div class="bg mobile secondary"></div>
+            </div>
+        </div>
         <script>
-            // hehehe
-            window.location.href = (navigator.languages.includes("de") ? "./de" : "./en")
+            fetch("php/memes_reddit.php", { }).then(
+                (response) => {
+                    if(response.ok) {
+                        // man, fuck javascript asynchronous programming!
+                        response.json().then((memes) => {
+                            console.log(memes);
+                            var alt = false;
+                            var bg_right = $(".bg.right");
+                            var bg_left = $(".bg.left");
+                            var bg_center = $(".bg.center");
+                            var bg_mobile = $(".bg.mobile");
+                            console.log(memes);
+                            var sw = ()=>{
+                                if (alt === false){
+                                    alt = true;
+                                    return bg_left;
+                                }
+                                else if (alt === true){
+                                    alt = null;
+                                    return bg_center;
+                                }
+                                else {
+                                    alt = false;
+                                    return bg_right;
+                                }
+                            };
+                            for (meme in memes) {
+                                sw() // Alternate between left, center, and right
+                                .add(bg_mobile) // Add the center to the current selection
+                                .append("\
+                                <div class=\"bg meme\"> \
+                                    <img src=\"" + memes[meme]["img"] +"\" class=\"bg\">\
+                                    </"+"div>"); //append the actual image
+                            }
+                            bg_right.add([bg_left, bg_center, bg_mobile]).toggleClass("animate")
+                        });
+                    }
+
+                }
+            )
         </script>
+        <div id="content"></div>
     </body>
 </html>
 

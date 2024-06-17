@@ -10,12 +10,21 @@
 }
 @keyframes moveDown {
     from {
-        transform: translateY(100%);
-      }
-    
-      to {
         transform: translateY(0%);
-      }
+    }
+    
+    to {
+        transform: translateY(100%);
+    }
+}
+@keyframes scroll-horizontal {
+    0% {
+        bottom: 100%;
+    }
+    
+    100% {
+        top: 0;
+    }
 }
 #background {
   --col: #090b0cad;
@@ -38,7 +47,7 @@
     .bg {
         margin: 1px;
     }
-    .bg.center {
+    .bg.mobile {
         display:none;
     }
 }
@@ -47,50 +56,68 @@
     
     .bg {
         flex-grow: 1;
-        margin: 5px;
+        margin: auto;
+        padding: 5px;
     }
 
-    .bg.left {
-        display:none;
-    }
-    .bg.right {
+    .bg.desktop {
         display:none;
     }
 
 }
+
+
 .bg.left {
     flex-direction: column;
     position: absolute;
-    top: 0px;
-    width: 25%;
+    bottom: 100%;
+    width: 33%;
     height: max-content;
-    left: 0px;
-    transform-origin: -100% 50%;
-    transform: rotateY(10deg);
+    left: 1px;
 }
 
 .bg.right {
     flex-direction: column;
     position: absolute;
-    top: 0px;
-    width: 25%;
+    bottom: 100%;
+    width: 33%;
     height: max-content;
-    right: 0px;
-    transform-origin: 200% 50% -5px;
-    transform: rotateY(-10deg);
+    right: 1px;
 }
 .bg.center {
+    bottom: 100%;
     position: absolute;
-    top: 0px;
-    height: 100%;
-    width: 50%;
-    left: 25%;
+    flex-direction: column;
+    position: absolute;
+    width: 32%;
+    height: max-content;
+    left: 34%
+    
+}
+.bg.mobile {
+    flex-direction: column;
+    position: absolute;
+    bottom: 100%;
+    left: 0;
+    height: max-content;
+    width: 100%;
     /*background-color: red;*/
 }
 
-.bg_fill {
-    height: 5px;
-    width: 50%;
+.bg.animate {
+    animation: moveDown 240s linear infinite;
+    white-space: nowrap;
+    justify-content: space-around;
+    .mobile {
+        animation-duration: 480s;
+        .secondary {
+            animation-delay: 240s;
+        }
+    }
+}
+
+.bg.secondary {
+    animation-delay: 120s;
 }
 /* old stuff */
 @media (prefers-reduced-motion: no-preference) { 
