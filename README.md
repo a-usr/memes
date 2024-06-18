@@ -1,1 +1,1 @@
-#This is a website about memes. Thats it.
+# This is a website about memes. Thats it.
