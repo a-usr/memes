@@ -50,7 +50,7 @@
     else {
       echo ",";
     }
-    echo '{"url":"www.reddit.com'.$data->permalink.'","img":"'.$data->url.'"}'; // wer hat sich die api ausgedacht, das ist so dumm wtf
+    echo '{"url":"https://www.reddit.com'.$data->permalink.'","img":"'.$data->url.'"}'; // wer hat sich die api ausgedacht, das ist so dumm wtf
     unset($data);
   }
   unset($post);

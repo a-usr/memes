@@ -11,6 +11,7 @@
             window.open("/", "_self");
 
         </script>
+        <title>This shit will never show and yet its still mandatory</title>
     </head>
     <body>
         <div class="w-full block flex-grow lg:flex lg:items-center lg:w-auto">
@@ -18,7 +19,7 @@
                 <h1 class="text-4xl sm:text-5xl lg:text-6xl">MEMES</h1>
                 <h3 class="text-3xl sm:text-4xl lg:text-5xl">The DNA of the soul</h3>
                 <button id="main" class="hover:text-gray-200 m-3"> Main Page</button>
-                <!--<button id="about" class="hover:text-gray-200"> &Uumlber diese Webseite</button>-->
+                <button id="de" class="hover:text-gray-200">Original (is in German)</button>
                 <button id="sources" class="hover:text-gray-200 m-3"> Sources</button>
             </div>
           </div>
@@ -29,7 +30,25 @@
                         url: "/en",
                         success: (data)=>{
                             var content = $("#content").html(data.replace(/<head>[\s\S]*<\/head>/mg, '')).html();
-                            window.history.pushState({html:content}, "", "/en");
+                            window.history.pushState({"html":content, "nav":window.history.state["nav"]}, "", "/en");
+                            },
+                        dataType: "html"
+                        });
+                    });
+                    $("#de").click((event)=>{
+                        $.ajax({
+                        url: "/de",
+                        success: (data)=>{
+                            var content = $("#content").html(data.replace(/<head>[\s\S]*<\/head>/mg, '')).html();
+                                $.ajax({
+                                    url: "/de/navbar.html",
+                                    //url: "/de",
+                                    success: (data)=>{
+                                        var nav = $("nav").html(data.replace(/<head>[\s\S]*<\/head>/mg, '')).html();
+                                        window.history.pushState({"html":content, "nav":nav}, "", "/de");
+                                        },
+                                    dataType: "html"
+                                })
                             },
                         dataType: "html"
                         })
@@ -39,7 +58,7 @@
                         url: "/en/sources",
                         success: (data)=>{
                             var content = $("#content").html(data.replace(/<head>[\s\S]*<\/head>/mg, '')).html();
-                            window.history.pushState({html:content}, "", "/en/sources");
+                            window.history.pushState({"html":content, "nav":window.history.state["nav"]}, "", "/en/sources");
                             },
                         dataType: "html"
                         })
