@@ -19,10 +19,10 @@
                         success: (data)=>{
                             var content = $("#content").html(data.replace(/<head>[\s\S]*<\/head>/mg, '')).html(); // remove the head because we dont need it and it would be dangeroud to keep (redirect loop)
                                 $.ajax({
-                                    url: "/"+prev.split("/")[3]+"/navbar.html",
+                                    url: "/"+prev.replace(".html", "").split("/")[0]+"/navbar.html",
                                     success: (data)=>{
                                         var nav = $("nav").html(data.replace(/<head>[\s\S]*<\/head>/mg, '')).html();
-                                        window.history.replaceState({"html":content, "nav":nav}, "", prev);
+                                        window.history.replaceState({"html":content, "nav":nav}, "", prev.replace(".html", ""));
                                         },
                                     dataType: "html"
                                 });
@@ -32,16 +32,16 @@
                 }
                 else {
                     $.ajax({
-                        url: navigator.languages.includes("de") ? "/de" : "/en",
+                        url: navigator.languages.includes("de") ? "de" : "en",
                         //url: "/de",
                         success: (data)=>{
                             var content = $("#content").html(data.replace(/<head>[\s\S]*<\/head>/mg, '')).html();
                                 $.ajax({
-                                    url: navigator.languages.includes("de") ? "/de/navbar.html" : "/en/navbar.html",
+                                    url: navigator.languages.includes("de") ? "de/navbar.html" : "en/navbar.html",
                                     //url: "/de",
                                     success: (data)=>{
                                         var nav = $("nav").html(data.replace(/<head>[\s\S]*<\/head>/mg, '')).html();
-                                        window.history.replaceState({"html":content, "nav":nav}, "", navigator.languages.includes("de") ? "/de" : "/en");
+                                        window.history.replaceState({"html":content, "nav":nav}, "", navigator.languages.includes("de") ? "de" : "en");
                                         },
                                     dataType: "html"
                                 })

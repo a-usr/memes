@@ -6,9 +6,8 @@
         <meta name=description content="Memes lol">
         <link rel="prefetch" href=".">
         <script>
-            var location = "/en/index.html";
             sessionStorage.setItem("SomeNameThatIsSurelyNotUsedElsewhere", location);
-            window.open("/", "_self");
+            window.open("../", "_self");
 
         </script>
         <title>This shit will never show and yet its still mandatory</title>
@@ -27,25 +26,25 @@
                 $(()=>{
                     $("#main").click((event)=>{
                         $.ajax({
-                        url: "/en",
+                        url: "../en",
                         success: (data)=>{
                             var content = $("#content").html(data.replace(/<head>[\s\S]*<\/head>/mg, '')).html();
-                            window.history.pushState({"html":content, "nav":window.history.state["nav"]}, "", "/en");
+                            window.history.pushState({"html":content, "nav":window.history.state["nav"]}, "", "en");
                             },
                         dataType: "html"
                         });
                     });
                     $("#de").click((event)=>{
                         $.ajax({
-                        url: "/de",
+                        url: "../de",
                         success: (data)=>{
                             var content = $("#content").html(data.replace(/<head>[\s\S]*<\/head>/mg, '')).html();
                                 $.ajax({
-                                    url: "/de/navbar.html",
+                                    url: "../de/navbar.html",
                                     //url: "/de",
                                     success: (data)=>{
                                         var nav = $("nav").html(data.replace(/<head>[\s\S]*<\/head>/mg, '')).html();
-                                        window.history.pushState({"html":content, "nav":nav}, "", "/de");
+                                        window.history.pushState({"html":content, "nav":nav}, "", "../de");
                                         },
                                     dataType: "html"
                                 })
@@ -55,10 +54,10 @@
                     });
                     $("#sources").click((event)=>{
                         $.ajax({
-                        url: "/en/sources",
+                        url: "../en/sources.html",
                         success: (data)=>{
                             var content = $("#content").html(data.replace(/<head>[\s\S]*<\/head>/mg, '')).html();
-                            window.history.pushState({"html":content, "nav":window.history.state["nav"]}, "", "/en/sources");
+                            window.history.pushState({"html":content, "nav":window.history.state["nav"]}, "", "../en/sources");
                             },
                         dataType: "html"
                         })

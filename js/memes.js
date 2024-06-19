@@ -69,6 +69,7 @@ $(()=>{
             sources.push(element["data"]["permalink"]);
         });
         bg_right.add([bg_left, bg_center, bg_mobile]).toggleClass("animate");
+        sessionStorage.setItem("sources", sources);
         
     });
 })
