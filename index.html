@@ -19,7 +19,7 @@
                         success: (data)=>{
                             var content = $("#content").html(data.replace(/<head>[\s\S]*<\/head>/mg, '')).html(); // remove the head because we dont need it and it would be dangeroud to keep (redirect loop)
                                 $.ajax({
-                                    url: "/"+prev.replace(".html", "").split("/")[0]+"/navbar.html",
+                                    url: "/"+prev.replace(".html", "").split("/")[1]+"/navbar.html",
                                     success: (data)=>{
                                         var nav = $("nav").html(data.replace(/<head>[\s\S]*<\/head>/mg, '')).html();
                                         window.history.replaceState({"html":content, "nav":nav}, "", prev.replace(".html", ""));
