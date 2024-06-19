@@ -54,52 +54,10 @@
                 $(window).bind("popstate", (e)=>{
                     $("nav").html(e.originalEvent.state["nav"]);
                     $("#content").html(e.originalEvent.state["html"]);
-                })
-
-                fetch("php/memes_reddit.php", { }).then(
-                    (response) => {
-                        if(response.ok) {
-                            // man, fuck javascript asynchronous programming!
-                            response.json().then((memes) => {
-                                var alt = false;
-                                var bg_right = $(".bg.right");
-                                var bg_left = $(".bg.left");
-                                var bg_center = $(".bg.center");
-                                var bg_mobile = $(".bg.mobile");
-                                var sw = ()=>{
-                                    if (alt === false){
-                                        alt = true;
-                                        return bg_left;
-                                    }
-                                    else if (alt === true){
-                                        alt = null;
-                                        return bg_center;
-                                    }
-                                    else {
-                                        alt = false;
-                                        return bg_right;
-                                    }
-                                };
-                                var sources = new Array();
-                                for (meme in memes) {
-                                    sw() // Alternate between left, center, and right
-                                    .add(bg_mobile) // Add the center to the current selection
-                                    .append("\
-                                    <div class=\"bg meme\"> \
-                                        <img src=\"" + memes[meme]["img"] +"\" class=\"bg\">\
-                                        </"+"div>"); //append the actual image
-                                    sources.push(memes[meme]["url"]);
-                                }
-                                console.log(typeof(sources));
-                                sessionStorage.setItem("sources", sources);
-                                bg_right.add([bg_left, bg_center, bg_mobile]).toggleClass("animate")
-                            });
-                        }
-                         
-                    }
-                )
+                });
             })
         </script>
+        <script src="js/memes.js"></script>
     </head>
     <body>
         <div class="-z-10 fixed left-0 h-full w-full overflow-hidden" id="background">
