@@ -11,9 +11,21 @@ h2 {
 }
 .text {
   position: relative;
-  left: 25%;
-  width: 50%;
 }
+@media not all and not (min-width: 640px) {
+    .text {
+        width: 50%;
+        left: 25%;
+    }
+}
+
+@media not all and (min-width: 640px) {
+    .text {
+        width: 90%;
+        left: 5%;
+    }
+}
+
 @keyframes moveDown {
     from {
         transform: translateY(0%);
@@ -141,17 +153,33 @@ h2 {
     }
 }
 
+@media not all and (min-width: 640px) {
+    .centerimgAAAA {
+        width: 90%;
+        left: 5%;
+    }
+    #meme_text{
+        width: 85%;
+    }
+}
+
+@media not all and not (min-width: 640px) {
+    .centerimgAAAA {
+        width: 50%;
+        left: 25%;
+    }
+    #meme_text {
+        width: 45%;
+    }
+}
+
 .centerimgAAAA {
     position: absolute; 
-    left: 0; 
-    right: 0; 
     margin-left: auto; 
     margin-right: auto; 
-    width: 50%;
 }
 #meme_text {
     margin: auto;
-    width: 45%;
     height: 100%;
 }
 .w-px {width: 1px; }
