@@ -58,7 +58,7 @@ $(()=>{
                 return bg_right;
             }
         };
-        var sources = new Array();
+        sources = new Array();
         posts["data"]["children"].forEach(element => {
             sw() // Alternate between left, center, and right
             .add(bg_mobile) // Add the center to the current selection
