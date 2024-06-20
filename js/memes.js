@@ -66,7 +66,7 @@ $(()=>{
             <div class=\"bg meme\"> \
             <img src=\"" + element["data"]["url"] +"\" class=\"bg\">\
             </"+"div>"); //append the actual image
-            sources.push(element["data"]["permalink"]);
+            sources.push("https://www.reddit.com"+element["data"]["permalink"]);
         });
         bg_right.add([bg_left, bg_center, bg_mobile]).toggleClass("animate");
         sessionStorage.setItem("sources", sources);
