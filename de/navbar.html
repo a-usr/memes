@@ -40,7 +40,7 @@
                         success: (data)=>{
                             var content = $("#content").html(data.replace(/<head>[\s\S]*<\/head>/mg, '')).html();
                             $.ajax({
-                                url: "../en/navbar.html",
+                                url: "/memes/en/navbar.html",
                                 //url: "/de",
                                 success: (data)=>{
                                     var nav = $("nav").html(data.replace(/<head>[\s\S]*<\/head>/mg, '')).html();
