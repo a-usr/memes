@@ -26,7 +26,7 @@
                 $(()=>{
                     $("#main").click((event)=>{
                         $.ajax({
-                        url: "../de",
+                        url: "./de",
                         success: (data)=>{
                             var content = $("#content").html(data.replace(/<head>[\s\S]*<\/head>/mg, '')).html();
                             window.history.pushState({html:content, "nav":window.history.state["nav"]}, "", "../de");
@@ -36,7 +36,7 @@
                     });
                     $("#en").click((event)=>{
                         $.ajax({
-                        url: "../en",
+                        url: "./en",
                         success: (data)=>{
                             var content = $("#content").html(data.replace(/<head>[\s\S]*<\/head>/mg, '')).html();
                             $.ajax({
@@ -54,7 +54,7 @@
                     });
                     $("#sources").click((event)=>{
                         $.ajax({
-                        url: "../de/quellen.html",
+                        url: "./de/quellen.html",
                         success: (data)=>{
                             var content = $("#content").html(data.replace(/<head>[\s\S]*<\/head>/mg, '')).html();
                             window.history.pushState({html:content, "nav":window.history.state["nav"]}, "", "../de/quellen");
