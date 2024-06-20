@@ -6,11 +6,65 @@
         <meta name=description content="Memes lol">
         <link rel="prefetch" href=".">
         <script>
-            sessionStorage.setItem("SomeNameThatIsSurelyNotUsedElsewhere", "./de/quellen.html");
-            window.open("../../", "_self");
+            sessionStorage.setItem("SomeNameThatIsSurelyNotUsedElsewhere", "/memes/de/quellen");
+            window.open("/memes/", "_self");
         </script>
         <title>This shit will never show and yet its still mandatory</title>
     </head>
     <body>
+        <script>
+            $(()=>{
+                var sources = sessionStorage.getItem("sources").split(",");
+                var alt = false;
+                var sw = () => {
+                    switch (alt) {
+                        case false: {
+                            alt = true;
+                            $(".tb").append("<tr class='tabol'></tr>");
+                            $(".tabol").append("<td class='sel'></td>");
+                            return $(".sel").removeClass("sel");
+                        }
+                        case true: {
+                            alt = null;
+                            $(".tabol").append("<td class='sel'></td>");
+                            return $(".sel").removeClass("sel");
+                        }
+                        case null: {
+                            alt = false;
+                            $(".tabol").append("<td class='sel'></td>").removeClass("tabol");
+                            return $(".sel").removeClass("sel");
+                        }
+                    }
+                }
+                if (sources !== null){
+                    for (source in sources){
+                        sw().append("<a href='"+sources[source]+"'>"+sources[source].split("/").reverse()[1].replace(/_/g, " ")+"<br></a>");
+                    }
+                }
+            })
+        </script>
+    
+    <br>
+    <br>
+    <br>
+    <br>
+    <h2 class="text-3xl sm:text-4xl lg:text-5xl">
+        Quellen:
+    </h2>
+    <br>
+    <a href="https://imgflip.com/meme/436972833/Tired-Wojak-at-Computer">Bild 1</a>
+    
+    <br>
+    <h2 class="text-3xl sm:text-4xl lg:text-5xl">
+        Hintergrund: 
+    </h2>
+    <br>
+    <br>
+    <br>
+    <div id="data">
+        <table class="tb">
+        </table>
+    </div>
     </body>
 </html>
+

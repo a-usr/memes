@@ -6,8 +6,8 @@
         <meta name=description content="Memes lol">
         <link rel="prefetch" href=".">
         <script>
-            sessionStorage.setItem("SomeNameThatIsSurelyNotUsedElsewhere", "./en");
-            window.open("../", "_self");
+            sessionStorage.setItem("SomeNameThatIsSurelyNotUsedElsewhere", "/memes/en");
+            window.open("/memes/", "_self");
 
         </script>
         <title>This shit will never show and yet its still mandatory</title>
@@ -26,7 +26,7 @@
                 $(()=>{
                     $("#main").click((event)=>{
                         $.ajax({
-                        url: "../en",
+                        url: "/memes/en",
                         success: (data)=>{
                             var content = $("#content").html(data.replace(/<head>[\s\S]*<\/head>/mg, '')).html();
                             window.history.pushState({"html":content, "nav":window.history.state["nav"]}, "", "en");
@@ -36,15 +36,15 @@
                     });
                     $("#de").click((event)=>{
                         $.ajax({
-                        url: "../de",
+                        url: "/memes/de",
                         success: (data)=>{
                             var content = $("#content").html(data.replace(/<head>[\s\S]*<\/head>/mg, '')).html();
                                 $.ajax({
-                                    url: "../de/navbar.html",
+                                    url: "/memes/de/navbar.html",
                                     //url: "/de",
                                     success: (data)=>{
                                         var nav = $("nav").html(data.replace(/<head>[\s\S]*<\/head>/mg, '')).html();
-                                        window.history.pushState({"html":content, "nav":nav}, "", "../de");
+                                        window.history.pushState({"html":content, "nav":nav}, "", "/memes/de");
                                         },
                                     dataType: "html"
                                 })
@@ -54,10 +54,10 @@
                     });
                     $("#sources").click((event)=>{
                         $.ajax({
-                        url: "../en/sources.html",
+                        url: "/memes/en/sources",
                         success: (data)=>{
                             var content = $("#content").html(data.replace(/<head>[\s\S]*<\/head>/mg, '')).html();
-                            window.history.pushState({"html":content, "nav":window.history.state["nav"]}, "", "../en/sources");
+                            window.history.pushState({"html":content, "nav":window.history.state["nav"]}, "", "/memes/en/sources");
                             },
                         dataType: "html"
                         })
