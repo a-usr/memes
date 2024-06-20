@@ -32,16 +32,16 @@
                 }
                 else {
                     $.ajax({
-                        url: navigator.languages.includes("de") ? "./de" : "./en",
+                        url: navigator.languages.includes("de") ? "/memes/de" : "/memes/en",
                         //url: "/de",
                         success: (data)=>{
                             var content = $("#content").html(data.replace(/<head>[\s\S]*<\/head>/mg, '')).html();
                                 $.ajax({
-                                    url: navigator.languages.includes("de") ? "./de/navbar.html" : "./en/navbar.html",
+                                    url: navigator.languages.includes("de") ? "/memes/de/navbar.html" : "/memes/en/navbar.html",
                                     //url: "/de",
                                     success: (data)=>{
                                         var nav = $("nav").html(data.replace(/<head>[\s\S]*<\/head>/mg, '')).html();
-                                        window.history.replaceState({"html":content, "nav":nav}, "", navigator.languages.includes("de") ? "./de" : "./en");
+                                        window.history.replaceState({"html":content, "nav":nav}, "", navigator.languages.includes("de") ? "/memes/de" : "/memes/en");
                                         },
                                     dataType: "html"
                                 })
