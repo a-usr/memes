@@ -29,7 +29,7 @@
                         url: "/memes/en",
                         success: (data)=>{
                             var content = $("#content").html(data.replace(/<head>[\s\S]*<\/head>/mg, '')).html();
-                            window.history.pushState({"html":content, "nav":window.history.state["nav"]}, "", "en");
+                            window.history.pushState({"html":content, "nav":window.history.state["nav"]}, "", "/memes/en");
                             },
                         dataType: "html"
                         });
