@@ -29,6 +29,7 @@
                             },
                         dataType: "html"
                     })
+                    document.documentElement.setAttribute('lang', prev.replace(".html", "").split("/")[2]);
                     sessionStorage.setItem("SomeNameThatIsSurelyNotUsedElsewhere", null);
                 }
                 else {
@@ -44,12 +45,13 @@
                                         var nav = $("nav").html(data.replace(/<head>[\s\S]*<\/head>/mg, '')).html();
                                         window.history.replaceState({"html":content, "nav":nav}, "", navigator.languages.includes("de") ? "/memes/de" : "/memes/en");
                                         },
-                                    dataType: "html"
-                                })
+                                        dataType: "html"
+                                    })
                             //window.history.replaceState({html:content}, "", "/de");
                         },
                         dataType: "html"
                     })
+                    document.documentElement.setAttribute('lang', navigator.languages.includes("de") ? "de" : "en");
                 }
 
                 $(window).bind("popstate", (e)=>{
