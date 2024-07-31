@@ -22,7 +22,7 @@ $(()=>{
         return fetch("https://oauth.reddit.com/r/memes/hot?"+ new URLSearchParams({
             "raw_json": 1,
             "limit": 50,
-            "after": "t3_1bug5i6"
+            "after": "t3_1e2rfwg"
         }),
         {
             method: "GET",
